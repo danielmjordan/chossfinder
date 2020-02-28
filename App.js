@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import RouteTile from './components/RouteTile';
+import Data from './assets/exampleData.js';
 
 export default function App() {
+  const [data, getData] = useState(Data.routes)
+  console.log(data)
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Text>List goes here</Text>
     </View>
   );
 }
@@ -12,7 +16,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#f2f2f2',
     alignItems: 'center',
     justifyContent: 'center',
   },

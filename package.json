@@ -8,15 +8,30 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "dotenv": "^8.2.0",
+    "eslint": "^6.8.0",
     "expo": "~36.0.0",
     "react": "~16.9.0",
     "react-dom": "~16.9.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz",
+    "react-native-elements": "^1.2.7",
     "react-native-web": "~0.11.7"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
     "babel-preset-expo": "~8.0.0",
-    "@babel/core": "^7.0.0"
+    "eslint-plugin-react": "^7.18.3",
+    "eslint-plugin-react-native": "^3.8.1",
+    "eslint-config-airbnb": "^18.0.1",
+    "babel-eslint": "^10.0.3"
+  },
+  "eslintConfig": {
+    "extends": "airbnb",
+    "parser": "babel-eslint",
+    "env": {
+      "jest": true,
+      "es6": true
+    }
   },
   "private": true
 }
