@@ -1,14 +1,21 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TextInput } from 'react-native';
 import RouteList from './components/RouteTile';
-import Data from './assets/exampleData.js';
+import Data from './exampleData.js';
 
 export default function App() {
   const [data, getData] = useState(Data.routes)
-  console.log(data)
+  const [location, getLocation] = useState('lat=40.03&lon=-105.25')
+
   return (
     <View style={styles.container}>
-      <Text>List goes here</Text>
+      {data.map((route, ind) => {
+        return (
+          <View style={styles.listItem} key={route.id}>
+            <Text>{route.name}, {route.rating}, {route.type}, {route.location[0]}</Text>
+          </View>
+        )
+      })}
     </View>
   );
 }
@@ -17,7 +24,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#f2f2f2',
-    alignItems: 'center',
-    justifyContent: 'center',
+    // alignItems: 'center',
+    // justifyContent: 'center',
+    paddingTop: 40,
+    paddingHorizontal: 20
   },
+  listItem: {
+    padding: 5,
+    borderBottomColor: 'gray',
+    borderBottomWidth: 1,
+  }
 });
