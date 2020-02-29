@@ -1,16 +1,15 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function Home () {
+export default function RouteDetail() {
   <View style={styles.container}>
-    <Text>Home Screen</Text>
+    <Text>Route Detail Screen</Text>
   </View>
 }
 
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#333',
-    padding: 30,
+    padding: 30
   }
 });
-

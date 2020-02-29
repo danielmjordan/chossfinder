@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20
   },
   listItem: {
+    flex: 1,
     borderBottomWidth: 1,
     borderBottomColor: '#4C5760'
   }
