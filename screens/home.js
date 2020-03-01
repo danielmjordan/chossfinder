@@ -1,16 +1,19 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
+import globalStyles from '../styles/globalStyles';
 
-export default function Home () {
-  <View style={styles.container}>
-    <Text>Home Screen</Text>
-  </View>
+export default function Home ({ navigation }) {
+
+  const pressHandler = () => {
+    navigation.navigate('Routes');
+  }
+
+  return (
+    <View style={globalStyles.container}>
+      <Button title="Get Route List" onPress={pressHandler} />
+    </View>
+  )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#333',
-    padding: 30,
-  }
-});
+
 
