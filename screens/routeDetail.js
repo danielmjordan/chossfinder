@@ -6,24 +6,37 @@ import globalStyles from '../styles/globalStyles';
 
 export default function RouteDetail({ navigation }) {
   const link = navigation.getParam('url');
+  const imageLink = navigation.getParam('imgMedium')
   return (
     <Card>
       <View>
-        <Text>{navigation.getParam('name')}</Text>
-        <Text>{navigation.getParam('rating')}</Text>
-        <Text>{navigation.getParam('type')}</Text>
-        <Text>Stars: {navigation.getParam('stars')}</Text>
-        <Text>{navigation.getParam('starVotes')} Star Votes</Text>
-        <Text>{navigation.getParam('location')}</Text>
-        <View style={{alignItems: 'center'}}>
+        <View style={styles.title}>
+          <Text style={styles.title}>{navigation.getParam('name')}</Text>
+        </View>
+        <View style={styles.body}>
+          <Text style={styles.body}>
+              Grade: {navigation.getParam('rating')}
+          </Text>
+          <Text style={styles.body}>
+              Route Type: {navigation.getParam('type')}
+          </Text>
+          <Text style={styles.body}>
+            {navigation.getParam('stars')} Stars out of
+            {navigation.getParam('starVotes')} votes
+          </Text>
+          <Text style={styles.body}>
+            Location: {navigation.getParam('location')}
+          </Text>
+        </View>
+        <View style={styles.image}>
           <Image
-            style={{width: 100, height: 100}}
-            source={{uri: navigation.getParam('imgMedium')}}
+            style={{width: 275, height: 275}}
+            source={{uri: imageLink}}
           />
         </View>
         <View>
           <Button
-            title={'Open route in Mountain Project'}
+            title={'View in Mountain Project'}
             onPress={() => WebBrowser.openBrowserAsync(link)}
           />
         </View>
@@ -34,10 +47,23 @@ export default function RouteDetail({ navigation }) {
 
 const styles = StyleSheet.create({
   image: {
-
+    alignItems: 'center',
+    padding: 10,
   },
-  text: {
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#4C5760',
+    alignItems: 'center',
+    borderBottomWidth: 3,
+    borderBottomColor: '#d3d3d3',
+    padding: 5,
+  },
+  body: {
+    paddingTop: 5,
+    color: '#4C5760',
     fontSize: 14,
+    fontWeight: 'bold'
   }
 })
 
