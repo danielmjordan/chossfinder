@@ -25,7 +25,7 @@ export default function Home ({ navigation }) {
   }
 
   return (
-    <View style={globalStyles.container}>
+    <View>
       <Button title="Get Routes for Current Location" onPress={pressHandler} />
       {/* <Button title="Search for Routes" onPress={() => console.log('navigate to search screen')}/> */}
     </View>
