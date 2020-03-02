@@ -3,8 +3,12 @@ import { StyleSheet, Text, View } from 'react-native';
 import globalStyles from '../styles/globalStyles';
 
 export default function Search() {
-  <View style={globalStyles.container}>
-    <Text>Search Screen</Text>
-  </View>
+  return (
+    <View style={globalStyles.container}>
+      <Text>Search Screen</Text>
+    </View>
+  )
 }
+
+
 

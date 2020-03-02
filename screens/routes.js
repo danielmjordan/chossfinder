@@ -1,18 +1,16 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
 import globalStyles from '../styles/globalStyles';
-import Data from '../exampleData'
 
 const Routes = ({ navigation }) => {
-  const [routes, getData] = useState(Data.routes);
-  const [location, getLocation] = useState("lat=40.03&lon=-105.25");
+  const routeResults = navigation.getParam('routes');
 
   return (
     <View style={globalStyles.container}>
       <FlatList
-        data={routes}
+        data={routeResults}
         renderItem={({ item }) => (
-          <View style={globalStyles.listItem} keyExtractor={item.id}>
+          <View style={globalStyles.listItem} keyExtractor={item.id.toString()}>
             <TouchableOpacity onPress={() => navigation.navigate('RouteDetail', item)}>
               <Text style={styles.text}>{item.name}, {item.rating}, {item.type}, {item.location[3]}</Text>
             </TouchableOpacity>
