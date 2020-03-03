@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Button } from 'react-native';
+import Card from '../shared/card';
+import RoutePicker from '../shared/routePicker';
+import GradePicker from '../shared/gradePicker';
 import globalStyles from '../styles/globalStyles';
 import MOUNTAIN_PROJECT_API_KEY from '../private/keys';
 
@@ -32,10 +35,26 @@ export default function Home ({ navigation }) {
 
   return (
     <View>
-      <Button title="Get Routes for Current Location" onPress={pressHandler} />
-      {/* <Button title="Search for Routes" onPress={() => console.log('navigate to search screen')}/> */}
+      <Card>
+        <Button
+          title="Get Routes for Current Location"
+          onPress={pressHandler}
+        />
+      </Card>
+      <Card>
+        <Button
+          title="Search for Routes"
+          onPress={() => console.log("navigate to search screen")}
+        />
+      </Card>
+      <Card>
+        <RoutePicker position={position} setPosition={setPosition}/>
+      </Card>
+      <Card>
+        <GradePicker difficulty={difficulty} setDifficulty={setDifficulty} />
+      </Card>
     </View>
-  )
+  );
 }
 
 

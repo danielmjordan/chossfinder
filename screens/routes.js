@@ -11,9 +11,9 @@ const Routes = ({ navigation }) => {
       <FlatList
         data={routeResults}
         renderItem={({ item }) => (
-          <View keyExtractor={item.id.toString()}>
+          <View>
             <TouchableOpacity onPress={() => navigation.navigate('RouteDetail', item)}>
-              <Card>
+              <Card keyExtractor={item.id.toString()}>
                 <Text>{item.name}, {item.rating}, {item.type}, {item.location[3]}</Text>
               </Card>
             </TouchableOpacity>
