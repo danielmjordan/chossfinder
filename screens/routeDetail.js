@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, Button, Linking } from 'react-native';
+import { StyleSheet, Text, View, Image, Button, Linking, TouchableOpacity } from 'react-native';
 import * as WebBrowser from 'expo-web-browser';
 import Card from '../shared/card';
 import globalStyles from '../styles/globalStyles';
@@ -22,21 +22,23 @@ export default function RouteDetail({ navigation }) {
           </Text>
           <Text style={styles.body}>
             {navigation.getParam('stars')} Stars out of
-            {navigation.getParam('starVotes')} votes
+            {' '}{navigation.getParam('starVotes')} votes
           </Text>
           <Text style={styles.body}>
             Location: {navigation.getParam('location')}
           </Text>
         </View>
         <View style={styles.image}>
-          <Image
-            style={{width: 275, height: 275}}
-            source={{uri: imageLink}}
-          />
+          <TouchableOpacity onPress={() => WebBrowser.openBrowserAsync(link)}>
+            <Image
+              style={{width: 275, height: 275}}
+              source={{uri: imageLink}}
+            />
+          </TouchableOpacity>
         </View>
         <View>
           <Button
-            title={'View in Mountain Project'}
+            title={'View on Mountain Project'}
             onPress={() => WebBrowser.openBrowserAsync(link)}
           />
         </View>
