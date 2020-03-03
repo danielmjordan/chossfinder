@@ -8,6 +8,12 @@ const globalStyles = StyleSheet.create({
   paragraph: {
     marginVertical: 8,
     lineHeight: 20,
+  },
+  loading: {
+    flex: 1,
+    backgroundColor: '#93A8AC',
+    justifyContent: 'center',
+    padding: 10,
   }
 });
 

@@ -6,12 +6,9 @@ import GradePicker from '../shared/gradePicker';
 import globalStyles from '../styles/globalStyles';
 import MOUNTAIN_PROJECT_API_KEY from '../private/keys';
 
-export default function Home ({ navigation }) {
+export default function Home ({ navigation, location }) {
   const [ routeResults, setRoutes ] = useState({});
-  const [ position, setPosition ] = useState({
-    lat: 39.7284,
-    lon: 107.6881
-  });
+  const [ position, setPosition ] = useState(location);
   const [ difficulty, setDifficulty ] = useState({
     min: 5.12,
     max: 5.14
@@ -20,7 +17,7 @@ export default function Home ({ navigation }) {
   useEffect(() => {
     (async () => {
       try {
-        const res = await fetch(`https://www.mountainproject.com/data/get-routes-for-lat-lon?lat=${position.lat}&lon=-${position.lon}&maxDistance=10&minDiff=${difficulty.min}&maxDiff=${difficulty.max}&key=${MOUNTAIN_PROJECT_API_KEY}`);
+        const res = await fetch(`https://www.mountainproject.com/data/get-routes-for-lat-lon?lat=${location.lat}&lon=-${location.lon}&maxDistance=10&minDiff=${difficulty.min}&maxDiff=${difficulty.max}&key=${MOUNTAIN_PROJECT_API_KEY}`);
         const results = await res.json();
         setRoutes(results);
       } catch (err) {
@@ -28,6 +25,8 @@ export default function Home ({ navigation }) {
       }
     })();
   }, []);
+
+  console.log(location);
 
   const pressHandler = () => {
     navigation.navigate('Routes', routeResults);
@@ -47,15 +46,12 @@ export default function Home ({ navigation }) {
           onPress={() => console.log("navigate to search screen")}
         />
       </Card>
-      <Card>
+      {/* <Card>
         <RoutePicker position={position} setPosition={setPosition}/>
       </Card>
       <Card>
         <GradePicker difficulty={difficulty} setDifficulty={setDifficulty} />
-      </Card>
+      </Card> */}
     </View>
   );
 }
-
-
-
