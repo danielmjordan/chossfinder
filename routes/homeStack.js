@@ -7,9 +7,6 @@ import Splash from '../screens/splash'
 import Search from '../screens/search';
 
 const screens = {
-  Splash: {
-    screen: Splash,
-  },
   Home: {
     screen: Home,
     navigationOptions: {
