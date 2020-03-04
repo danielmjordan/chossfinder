@@ -49,7 +49,7 @@ export default function Home ({ navigation }) {
     );
   } else {
     return (
-      <View>
+      <View style={globalStyles.container}>
         <Card>
           <Button
             title={'Get Routes for Current Location'}

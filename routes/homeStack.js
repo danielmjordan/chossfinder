@@ -10,7 +10,7 @@ const screens = {
   Home: {
     screen: Home,
     navigationOptions: {
-      title: 'Route Finder'
+      title: 'Choss Finder'
     }
   },
   Routes: {

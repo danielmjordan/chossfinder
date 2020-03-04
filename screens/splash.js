@@ -8,7 +8,7 @@ export default function Splash () {
         CHOSS-FINDER
       </Text>
       <Text style={styles.sub}>
-        Find Some Choss Near You
+        Find Local Choss
       </Text>
     </View>
   )

@@ -8,10 +8,17 @@ export default function App() {
 
   const [isLoading, setIsLoading ] = useState(true);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+       setIsLoading(false);
+    }, 3500);
+    return () => clearTimeout(timer);
+  }, []);
+
   if (isLoading) {
     return (
       <Splash />
-    )
+    );
   } else {
     return (
       <View style={globalStyles.container}>
