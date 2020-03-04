@@ -1,7 +1,7 @@
 import React from 'react';
 import { Picker } from 'react-native';
 
-export default function RoutePicker({ navigation, difficulty, setDifficulty }) {
+export default function RoutePicker({ difficulty, setDifficulty }) {
   return (
     <Picker
       selectedValue={difficulty}

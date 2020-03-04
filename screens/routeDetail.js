@@ -7,6 +7,8 @@ import globalStyles from '../styles/globalStyles';
 export default function RouteDetail({ navigation }) {
   const link = navigation.getParam('url');
   const imageLink = navigation.getParam('imgMedium')
+  const location = navigation.getParam('location')
+
   return (
     <Card>
       <View>
@@ -24,9 +26,6 @@ export default function RouteDetail({ navigation }) {
             {navigation.getParam('stars')} Stars out of
             {' '}{navigation.getParam('starVotes')} votes
           </Text>
-          <Text style={styles.body}>
-            Location: {navigation.getParam('location')}
-          </Text>
         </View>
         <View style={styles.image}>
           <TouchableOpacity onPress={() => WebBrowser.openBrowserAsync(link)}>
@@ -36,6 +35,10 @@ export default function RouteDetail({ navigation }) {
             />
           </TouchableOpacity>
         </View>
+        {location.slice(0, 3).map((el, i) => (
+              <Text style={styles.body} key={i}>{el}</Text>
+            )
+          )}
         <View>
           <Button
             title={'View on Mountain Project'}
@@ -64,7 +67,8 @@ const styles = StyleSheet.create({
   body: {
     paddingTop: 5,
     color: '#4C5760',
-    fontSize: 14,
+    alignSelf: 'center',
+    fontSize: 15,
     fontWeight: 'bold'
   }
 })
