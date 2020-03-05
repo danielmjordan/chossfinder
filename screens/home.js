@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, ActivityIndicator, Button } from 'react-native';
 import Card from '../shared/card';
+import Map from '../shared/map';
 import globalStyles from '../styles/globalStyles';
 import MOUNTAIN_PROJECT_API_KEY from '../private/keys';
 
@@ -59,6 +60,9 @@ export default function Home ({ navigation }) {
           <TouchableOpacity onPress={() => pressHandler('Search')}>
             <Text style={styles.text}>Search For Routes</Text>
           </TouchableOpacity>
+        </Card>
+        <Card>
+          <Map lat={location.lat} lon={location.lon}/>
         </Card>
       </View>
     );

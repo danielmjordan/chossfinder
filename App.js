@@ -11,7 +11,7 @@ export default function App() {
   useEffect(() => {
     const timer = setTimeout(() => {
        setIsLoading(false);
-    }, 3500);
+    }, 3000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -27,4 +27,3 @@ export default function App() {
     );
   }
 };
-
