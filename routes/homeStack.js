@@ -30,7 +30,7 @@ const screens = {
     navigationOptions: {
       title: 'Search for Routes'
     }
-  }
+  },
 };
 
 const HomeStack = createStackNavigator(screens, {

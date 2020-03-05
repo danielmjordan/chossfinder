@@ -58,11 +58,12 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     fontWeight: 'bold',
+    fontStyle: 'italic',
     color: '#4C5760',
     alignItems: 'center',
     borderBottomWidth: 3,
     borderBottomColor: '#d3d3d3',
-    padding: 5,
+    padding: 3,
   },
   body: {
     paddingTop: 5,

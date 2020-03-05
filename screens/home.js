@@ -37,8 +37,8 @@ export default function Home ({ navigation }) {
       setIsLoading(false);
   };
 
-  const pressHandler = () => {
-    navigation.navigate('Routes', routeResults);
+  const pressHandler = (screen) => {
+    navigation.navigate(screen, routeResults);
   };
 
   if (isLoading) {
@@ -51,18 +51,24 @@ export default function Home ({ navigation }) {
     return (
       <View style={globalStyles.container}>
         <Card>
-          <Button
-            title={'Get Routes for Current Location'}
-            onPress={pressHandler}
-          />
+          <TouchableOpacity onPress={() => pressHandler('Routes')}>
+            <Text style={styles.text}>Get Routes for Current Location</Text>
+          </TouchableOpacity>
         </Card>
         <Card>
-          <Button
-            title={"Search for Routes"}
-            onPress={() => console.log("navigate to search screen")}
-          />
+          <TouchableOpacity onPress={() => pressHandler('Search')}>
+            <Text style={styles.text}>Search For Routes</Text>
+          </TouchableOpacity>
         </Card>
       </View>
     );
   }
-}
+};
+
+const styles = StyleSheet.create({
+  text: {
+    textAlign: 'center',
+    fontSize: 18,
+    color: '#4C5760',
+  }
+});
