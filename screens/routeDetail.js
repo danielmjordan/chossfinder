@@ -1,71 +1,86 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, Button, Linking, TouchableOpacity } from 'react-native';
+import {
+  StyleSheet, Text, View, Image, Button, Linking, TouchableOpacity, ScrollView
+} from 'react-native';
 import * as WebBrowser from 'expo-web-browser';
+import Map from '../shared/map';
 import Card from '../shared/card';
+import Stars from '../shared/stars';
 import globalStyles from '../styles/globalStyles';
 
 export default function RouteDetail({ navigation }) {
   const link = navigation.getParam('url');
-  const imageLink = navigation.getParam('imgMedium')
+  const imageLink = navigation.getParam('imgMedium');
+  const location = navigation.getParam('location');
+  const lat = navigation.getParam('latitude');
+  const lon = navigation.getParam('longitude');
+  const name = navigation.getParam('name');
+  const grade = navigation.getParam('rating');
+  const starCount = navigation.getParam('stars')
+  const starVotes = navigation.getParam('starVotes')
+
   return (
-    <Card>
-      <View>
-        <View style={styles.title}>
-          <Text style={styles.title}>{navigation.getParam('name')}</Text>
+    <ScrollView>
+      <Card>
+        <View style={styles.parent}>
+          <View style={styles.title}>
+            <Text style={styles.title}>{name}</Text>
+          </View>
+          <View style={styles.subTitle}>
+            <View>
+              <Stars stars={starCount} size={15} votes={starVotes} />
+            </View>
+            <Text style={styles.text}>Grade: {grade} </Text>
+            <Text style={styles.text}>Type: {navigation.getParam("type")}</Text>
+          </View>
+          <View style={styles.image}>
+            <TouchableOpacity onPress={() => WebBrowser.openBrowserAsync(link)}>
+              <Image
+                style={{ width: 325, height: 325 }}
+                source={{ uri: imageLink }}
+              />
+            </TouchableOpacity>
+          </View>
         </View>
-        <View style={styles.body}>
-          <Text style={styles.body}>
-              Grade: {navigation.getParam('rating')}
-          </Text>
-          <Text style={styles.body}>
-              Route Type: {navigation.getParam('type')}
-          </Text>
-          <Text style={styles.body}>
-            {navigation.getParam('stars')} Stars out of
-            {' '}{navigation.getParam('starVotes')} votes
-          </Text>
-          <Text style={styles.body}>
-            Location: {navigation.getParam('location')}
-          </Text>
-        </View>
-        <View style={styles.image}>
-          <TouchableOpacity onPress={() => WebBrowser.openBrowserAsync(link)}>
-            <Image
-              style={{width: 275, height: 275}}
-              source={{uri: imageLink}}
-            />
-          </TouchableOpacity>
-        </View>
+        <Map lat={lat} lon={lon} name={name} location={location.join(', ')}/>
         <View>
           <Button
-            title={'View on Mountain Project'}
+            title={"View on Mountain Project"}
             onPress={() => WebBrowser.openBrowserAsync(link)}
           />
         </View>
-      </View>
-    </Card>
-  )
+      </Card>
+    </ScrollView>
+  );
 };
 
 const styles = StyleSheet.create({
+  subTitle: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'baseline',
+    borderBottomWidth: 3,
+    borderBottomColor: '#d3d3d3',
+    padding: 3,
+  },
   image: {
     alignItems: 'center',
-    padding: 10,
+    padding: 5,
+    flexGrow: 1,
   },
   title: {
     fontSize: 20,
     fontWeight: 'bold',
+    fontStyle: 'italic',
     color: '#4C5760',
     alignItems: 'center',
-    borderBottomWidth: 3,
-    borderBottomColor: '#d3d3d3',
-    padding: 5,
+    padding: 3,
   },
-  body: {
-    paddingTop: 5,
+  text: {
+    fontWeight: 'bold',
+    fontStyle: 'italic',
     color: '#4C5760',
     fontSize: 14,
-    fontWeight: 'bold'
   }
 })
 

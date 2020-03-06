@@ -3,13 +3,14 @@ import { createAppContainer } from 'react-navigation';
 import Home from '../screens/home';
 import Routes from '../screens/routes';
 import RouteDetail from '../screens/routeDetail';
-import Search from '../screens/search'
+import Splash from '../screens/splash'
+import Search from '../screens/search';
 
 const screens = {
   Home: {
     screen: Home,
     navigationOptions: {
-      title: 'Route Finder'
+      title: 'Choss Finder'
     }
   },
   Routes: {
@@ -29,7 +30,7 @@ const screens = {
     navigationOptions: {
       title: 'Search for Routes'
     }
-  }
+  },
 };
 
 const HomeStack = createStackNavigator(screens, {

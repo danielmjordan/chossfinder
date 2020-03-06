@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Blank Template",
+    "name": "Route Finder",
     "slug": "route-finder",
     "privacy": "public",
     "sdkVersion": "36.0.0",
@@ -14,6 +14,7 @@
     "icon": "./assets/icon.png",
     "splash": {
       "resizeMode": "cover",
+      "image": "./assets/splash.png",
       "backgroundColor": "#93A8AC"
     },
     "updates": {
