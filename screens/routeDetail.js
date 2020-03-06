@@ -5,6 +5,7 @@ import {
 import * as WebBrowser from 'expo-web-browser';
 import Map from '../shared/map';
 import Card from '../shared/card';
+import Stars from '../shared/stars';
 import globalStyles from '../styles/globalStyles';
 
 export default function RouteDetail({ navigation }) {
@@ -13,25 +14,28 @@ export default function RouteDetail({ navigation }) {
   const location = navigation.getParam('location');
   const lat = navigation.getParam('latitude');
   const lon = navigation.getParam('longitude');
+  const name = navigation.getParam('name');
+  const grade = navigation.getParam('rating');
+  const starCount = navigation.getParam('stars')
+  const starVotes = navigation.getParam('starVotes')
 
   return (
     <ScrollView>
       <Card>
         <View>
           <View style={styles.title}>
-            <Text style={styles.title}>{navigation.getParam('name')}</Text>
+            <Text style={styles.title}>{name}</Text>
           </View>
-          <View style={styles.body}>
-            <Text style={styles.body}>
-                Grade: {navigation.getParam('rating')}
+          <View>
+            <Text style={styles.bodyText}>
+                Grade: {grade}
             </Text>
-            <Text style={styles.body}>
+            <Text style={styles.bodyText}>
                 Route Type: {navigation.getParam('type')}
             </Text>
-            <Text style={styles.body}>
-              {navigation.getParam('stars')} Stars out of
-              {' '}{navigation.getParam('starVotes')} votes
-            </Text>
+            <View style={styles.stars}>
+              <Stars stars={starCount} size={15} votes={starVotes}/>
+            </View>
           </View>
           <View style={styles.image}>
             <TouchableOpacity onPress={() => WebBrowser.openBrowserAsync(link)}>
@@ -41,12 +45,12 @@ export default function RouteDetail({ navigation }) {
               />
             </TouchableOpacity>
           </View>
-          <View style={styles.loc}>
+          {/* <View style={styles.loc}>
             {location.slice(0, 3).map((el, i) => (
-                  <Text style={styles.body} key={i}>{el}</Text>
+                  <Text style={styles.bodyText} key={i}>{el}</Text>
                 )
               )}
-          </View>
+          </View> */}
           <View>
             <Button
               title={'View on Mountain Project'}
@@ -54,17 +58,13 @@ export default function RouteDetail({ navigation }) {
             />
           </View>
         </View>
-        <Map lat={lat} lon={lon}/>
+        <Map lat={lat} lon={lon} name={name} grade={grade} />
       </Card>
     </ScrollView>
   )
 };
 
 const styles = StyleSheet.create({
-  // loc: {
-  //   flexDirection: 'row',
-  //   justifyContent: 'space-between'
-  // },
   image: {
     alignItems: 'center',
     padding: 10,
@@ -79,12 +79,17 @@ const styles = StyleSheet.create({
     borderBottomColor: '#d3d3d3',
     padding: 3,
   },
-  body: {
+  bodyText: {
     paddingTop: 5,
     color: '#4C5760',
     alignSelf: 'center',
     fontSize: 15,
     fontWeight: 'bold'
+  },
+  stars: {
+    display: 'flex',
+    justifyContent: 'center',
+    // alignSelf: 'center',
   }
 })
 

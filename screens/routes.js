@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, FlatList, TouchableOpacity, Image } from 'react-native';
+import Stars from '../shared/stars';
 import Card from '../shared/card';
 import globalStyles from '../styles/globalStyles';
 
 const Routes = ({ navigation }) => {
   const results = navigation.getParam('routes');
-  // const routeResults = results.sort((a, b) => a.stars - b.stars);
+  const routeResults = results.sort((a, b) => b.stars - a.stars);
 
   return (
     <View style={globalStyles.container}>
       <FlatList
-        data={results}
+        data={routeResults}
         renderItem={({ item }) => {
           if (item.imgSqSmall) {
             return (
@@ -30,6 +31,9 @@ const Routes = ({ navigation }) => {
                           <Text style={styles.title}>
                             {item.name}
                           </Text>
+                          <View style={styles.starParent}>
+                            <Stars stars={item.stars} size={12}/>
+                          </View>
                         </View>
                         <Text style={styles.subTitle}>
                         {item.rating}, {item.type}
@@ -62,8 +66,6 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: 'bold',
     fontStyle: 'italic',
-    borderBottomWidth: 1,
-    borderBottomColor: '#d3d3d3',
     marginLeft: 5,
     color: '#4C5760',
   },
@@ -77,7 +79,7 @@ const styles = StyleSheet.create({
   },
   textParent: {
     flexGrow: 2,
-  }
+  },
 });
 
 export default Routes;
