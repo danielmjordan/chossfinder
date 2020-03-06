@@ -6,8 +6,8 @@ export default function RoutePicker({ difficulty, setDifficulty }) {
     <Picker
       selectedValue={difficulty}
       onValueChange={(itemValue, itemIndex) => {
-        setDifficulty(itemValue);
-        console.log(difficulty);
+        // setDifficulty(itemValue);
+        console.log(itemValue);
       }}
     >
       <Picker.Item

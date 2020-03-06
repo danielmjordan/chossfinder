@@ -5,19 +5,19 @@ import Card from '../shared/card';
 import globalStyles from '../styles/globalStyles';
 
 const Routes = ({ navigation }) => {
-  const results = navigation.getParam('routes');
-  const routeResults = results.sort((a, b) => b.stars - a.stars);
+  const routeResults = navigation.getParam('routes');
 
   return (
     <View style={globalStyles.container}>
       <FlatList
+        keyExtractor={(item, index) => index.toString()}
         data={routeResults}
         renderItem={({ item }) => {
           if (item.imgSqSmall) {
             return (
               <View>
                 <TouchableOpacity onPress={() => navigation.navigate('RouteDetail', item)}>
-                  <Card keyExtractor={item.id.toString()}>
+                  <Card>
                     <View style={styles.container}>
                       <View>
                         <Image

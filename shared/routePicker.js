@@ -6,8 +6,8 @@ export default function RoutePicker({ navigation, position, setPosition }) {
       <Picker
         selectedValue={position}
         onValueChange={(itemValue, itemIndex) => {
-          setPosition(itemValue);
-          console.log(position);
+          // setPosition(itemValue);
+          console.log(itemValue);
         }}
       >
         <Picker.Item

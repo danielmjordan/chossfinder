@@ -10,7 +10,7 @@ export default function Home ({ navigation }) {
   const [ isLoading, setIsLoading ] = useState(true);
   const [ location, setLocation ] = useState('');
   const [ difficulty, setDifficulty ] = useState({
-    min: 5.9,
+    min: 5.12,
     max: 5.14
   });
 
@@ -31,7 +31,7 @@ export default function Home ({ navigation }) {
 
   const getRoutes = async () => {
       const res = await fetch(
-        `https://www.mountainproject.com/data/get-routes-for-lat-lon?lat=${location.lat}&lon=${location.lon}&maxDistance=100&maxResults=500&minDiff=${difficulty.min}&maxDiff=${difficulty.max}&key=${MOUNTAIN_PROJECT_API_KEY}`
+        `https://www.mountainproject.com/data/get-routes-for-lat-lon?lat=${location.lat}&lon=${location.lon}&maxDistance=100&maxResults=100&minDiff=${difficulty.min}&maxDiff=${difficulty.max}&key=${MOUNTAIN_PROJECT_API_KEY}`
       );
       const results = await res.json();
       setRoutes(results);

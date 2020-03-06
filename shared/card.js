@@ -8,8 +8,7 @@ export default function Card (props) {
         {props.children}
       </View>
     </View>
-  )
-
+  );
 }
 
 const styles = StyleSheet.create({
@@ -22,7 +21,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 2,
     marginHorizontal: 4,
-    marginVertical: 6,
+    marginVertical: 4,
   },
   cardContent: {
     marginHorizontal: 18,

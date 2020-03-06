@@ -22,52 +22,51 @@ export default function RouteDetail({ navigation }) {
   return (
     <ScrollView>
       <Card>
-        <View>
+        <View style={styles.parent}>
           <View style={styles.title}>
             <Text style={styles.title}>{name}</Text>
           </View>
-          <View>
-            <Text style={styles.bodyText}>
-                Grade: {grade}
-            </Text>
-            <Text style={styles.bodyText}>
-                Route Type: {navigation.getParam('type')}
-            </Text>
-            <View style={styles.stars}>
-              <Stars stars={starCount} size={15} votes={starVotes}/>
+          <View style={styles.subTitle}>
+            <View>
+              <Stars stars={starCount} size={15} votes={starVotes} />
             </View>
+            <Text style={styles.text}>Grade: {grade} </Text>
+            <Text style={styles.text}>Type: {navigation.getParam("type")}</Text>
           </View>
           <View style={styles.image}>
             <TouchableOpacity onPress={() => WebBrowser.openBrowserAsync(link)}>
               <Image
-                style={{width: 275, height: 275}}
-                source={{uri: imageLink}}
+                style={{ width: 325, height: 325 }}
+                source={{ uri: imageLink }}
               />
             </TouchableOpacity>
           </View>
-          {/* <View style={styles.loc}>
-            {location.slice(0, 3).map((el, i) => (
-                  <Text style={styles.bodyText} key={i}>{el}</Text>
-                )
-              )}
-          </View> */}
-          <View>
-            <Button
-              title={'View on Mountain Project'}
-              onPress={() => WebBrowser.openBrowserAsync(link)}
-            />
-          </View>
         </View>
-        <Map lat={lat} lon={lon} name={name} grade={grade} />
+        <Map lat={lat} lon={lon} name={name} location={location.join(', ')}/>
+        <View>
+          <Button
+            title={"View on Mountain Project"}
+            onPress={() => WebBrowser.openBrowserAsync(link)}
+          />
+        </View>
       </Card>
     </ScrollView>
-  )
+  );
 };
 
 const styles = StyleSheet.create({
+  subTitle: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'baseline',
+    borderBottomWidth: 3,
+    borderBottomColor: '#d3d3d3',
+    padding: 3,
+  },
   image: {
     alignItems: 'center',
-    padding: 10,
+    padding: 5,
+    flexGrow: 1,
   },
   title: {
     fontSize: 20,
@@ -75,21 +74,13 @@ const styles = StyleSheet.create({
     fontStyle: 'italic',
     color: '#4C5760',
     alignItems: 'center',
-    borderBottomWidth: 3,
-    borderBottomColor: '#d3d3d3',
     padding: 3,
   },
-  bodyText: {
-    paddingTop: 5,
+  text: {
+    fontWeight: 'bold',
+    fontStyle: 'italic',
     color: '#4C5760',
-    alignSelf: 'center',
-    fontSize: 15,
-    fontWeight: 'bold'
-  },
-  stars: {
-    display: 'flex',
-    justifyContent: 'center',
-    // alignSelf: 'center',
+    fontSize: 14,
   }
 })
 
